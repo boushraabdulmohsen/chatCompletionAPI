@@ -1,0 +1,17 @@
+{
+  "name": "gptapi",
+  "version": "1.0.0",
+  "description": "Incorporate the Open AI API for GPT into a basic application to facilitate interaction with artificial intelligence models.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "openai": "^3.2.1"
+  }
+}
