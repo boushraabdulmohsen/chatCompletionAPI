@@ -15,11 +15,13 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(cors);
 
-app.get("/", async (req, res) => {
+app.post("/", async (req, res) => {
+    const {message} = req.body;
+    
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: [{
-            role: "user", content: "Hello, World!"
+            role: "user", content: `${message}`
         }]
     })
     res.json({
