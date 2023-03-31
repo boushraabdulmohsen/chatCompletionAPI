@@ -19,6 +19,54 @@
 
         </div>
     </main>
-	<script></script>
+	<script>
+        const chatLog = document.getElementById('chat-log');
+        const messgae = document.getElementById('messgae');
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            //prevent reload
+            e.preventDefault();
+            //get the message
+            const messageText = messgae.value();
+            //set the message to be blank after submitted 
+            message.value = '';
+            //create new div element
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.classList.add('message--sent');
+            messageElement.innerHTML = `
+                <div class="message--text">${messageText}</div>
+            `;
+            //Add the messageElement to chatLog
+            chatLog.appendChild(messageElement);
+            //add scroll top to the chat log depending on the height
+            chatLog.scrollTop = chatLog.scrollHeight;
+            //Do fetch request to the server on port 3000
+            fetch('http://localhost:3000', {
+                method: 'POST',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify({
+                    messgae: messageText
+                })
+            })
+            //Response in JSON format
+            .then(res => res.json())
+            .then(data => {
+                //create new div element
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message');
+                messageElement.classList.add('message--received');
+                messageElement.innerHTML = `
+                    <div class="message--text">${data.completion.content}</div>
+                `;
+                //Add the messageElement to chatLog
+                chatLog.appendChild(messageElement);
+                //add scroll top to the chat log depending on the height
+                chatLog.scrollTop = chatLog.scrollHeight;
+            })
+        });
+    </script>
   </body>
 </html>
