@@ -4,7 +4,8 @@
   "description": "Incorporate the Open AI API for GPT into a basic application to facilitate interaction with artificial intelligence models.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
